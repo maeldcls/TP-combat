@@ -1,0 +1,13 @@
+
+
+.choiceButton{
+    background-color: transparent;
+    border: 1px solid grey;
+    color:grey;
+
+}
+.choiceButton:hover{
+    background-color: black;
+    border:1px solid white;
+    color:white;
+}
