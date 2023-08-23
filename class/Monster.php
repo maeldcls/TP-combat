@@ -51,11 +51,41 @@ class Monster{
 
     public function hit(Hero $hero):int
     {
-        $damage = rand(0,50);
+        $damage = 2*$this->multiplicator($hero);
         $heroHP = $hero->getHp();
-        $hero->setHp($heroHP-$damage);
-
+        $hero->setHp($heroHP-($damage));
+        var_dump($this->multiplicator($hero));
+        if($hero->getHp()<0){
+            $hero->setHp(0);
+        }
         return $damage;
+    }
+
+    public function multiplicator(Hero $hero):int
+    {
+        $multi=0;
+        if($this->getName() == "wizard"){
+            if($hero->getClass() == "warrior"){
+                $multi = 2;
+            }else{
+                $multi = 1;
+            }
+        }else if($this->getName() == "ogre"){
+            if($hero->getClass() == "archer"){
+                $multi = 2;
+            }else{
+                $multi = 1;
+            }
+        }else if($this->getName() == "fantassin"){
+            if($hero->getClass() == "mage"){
+                $multi = "boosté";
+            }else{
+                $multi = "normal";
+            }
+        }else{
+            $multi = 1;
+        }
+        return $multi;
     }
 }
 ?>

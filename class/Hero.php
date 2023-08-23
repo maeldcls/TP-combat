@@ -3,8 +3,11 @@ class Hero {
     private $id;
     private $name;
     private $hp;
+    private $class;
+    private $picture;
+
   
-    function __construct($name) {
+    function __construct($name,) {
         $this->name = $name;
     }
 
@@ -68,14 +71,60 @@ class Hero {
         return $this;
     }
 
+    
+    /**
+     * Get the value of picture
+     */ 
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set the value of picture
+     *
+     * @return  self
+     */ 
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of class
+     */ 
+    public function getClass()
+    {
+        return $this->class;
+    }
+
+    /**
+     * Set the value of class
+     *
+     * @return  self
+     */ 
+    public function setClass($class)
+    {
+        $this->class = $class;
+
+        return $this;
+    }
     public function hit(Monster $monster):int
     {
         $damage = rand(0,50);
         $monsterHP = $monster->getHp();
         $monster->setHp($monsterHP - $damage);
+        if($monster->getHp()<0){
+            $monster->setHp(0);
+        }
 
         return $damage;
     }
+
+    
+
 }
 
 ?>
