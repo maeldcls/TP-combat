@@ -1,9 +1,16 @@
+
 body{
-    background-image: url("../img/fond.png");
+    background-image: url("../img/fond5.jpg");
     height: 100%;
+    min-height: 100vh;
+    margin:0;
+    padding:0;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
+
+
 .accueil{
     text-decoration: none;
     color: grey;
@@ -14,14 +21,14 @@ body{
 }
 
 .container{
+ 
     display:flex;
     justify-content: center;
-  
-    background-color:lightgrey;
-    border: 2px solid white;
+    color:white;
+    
     margin:auto;
-    flex-direction: column;
-    width: 40%;
+    flex-direction: row;
+    width: 60%;
     opacity: 80%;
     text-align: center;
 }
@@ -35,14 +42,152 @@ body{
 .hp>*{
     padding:3px;
 }
+.herostats,.monsterstats{
+    display:flex;
+    justify-content: center;
+    color:white;
+    background-color:#464ed3;
+    border: 2px solid white;
+    margin:auto;
+    flex-direction: column;
+    padding:0px;
+    margin:0px;
+    width:20%;
 
+}
+.herostats>*{
+    font-size:20px;
+}
+.monsterstats>*{
+    font-size:20px;
+}
 
-.herocard{
-    
-background-color: azure;
-width:50%;
+.log{
+    display:flex;
+    justify-content: center;
+    color:white;
+    background-color:#464ed3;
+    border: 2px solid white;
+    margin:auto;
+    flex-direction: column;
+    padding:0px;
+    margin:0px;
+    width:80%
+}
+.log>p{
+    margin:0px;
+    padding:1px;
 }
 svg{
     
 }
+.arena{
+    width :100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+   
+}
 
+.hero{
+
+width: 200px;
+align-self: flex-end;
+}
+
+.hero>img{
+    width: 100%;
+}
+.monster{
+    width: 400px;
+    align-self: flex-end;
+    }
+    
+.monster>img{
+    width: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.pv{
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+}
+.pv>*{
+    align-self: center;
+    padding:2px;
+}
+
+.next{
+    background-color: #464ed3;
+    width:60%;
+    border: 1px solid white;
+    color:white;
+    opacity: 80%;
+    cursor:pointer;
+    height: 50px;
+    font-size: 20px;
+    margin-top:0px;
+    
+}
+.container{
+    margin-bottom:0px;
+}
+.tour{
+   font-size:20px;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .container{
+        width:100%;
+    }
+  }
+
+  @media only screen and (max-width: 320px) {
+    .container{
+        width:100%;
+    }
+  }
+
+.attackHero{
+    animation-name: attackHero;
+    animation-duration: 1s;
+}
+
+@keyframes attackHero{
+    0% {
+        transform: translateX(0%);
+        
+    }
+    50%{
+        transform: translateX(500%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.attackMonster{
+    animation-name: attackMonster;
+    animation-duration: 1s;
+}
+
+@keyframes attackMonster{
+    0% {
+        transform: translateX(0%);
+        
+    }
+    50%{
+        transform: translateX(-200%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}

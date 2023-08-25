@@ -4,6 +4,17 @@ require_once('config/autoload.php');
 
 
 
+$manager = new HeroesManager($bdd);
+
+$hero = $manager->find($_GET['id']);
+
+$fightManager = new FightManager();
+$monsterManager = new MonsterManager($bdd);
+$monster = $monsterManager->selectMonster();
+$monsterHP = $monster->getHp();
+$fightResults = $fightManager->fight($hero, $monster);
+$manager->update($hero);
+//$monsterManager->update($monster);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,47 +28,83 @@ require_once('config/autoload.php');
 
 <body>
     <a href="index.php" class="accueil">Accueil</a>
-    <div class="container">
-        <h2>Combat :</h2>
 
-        <?php
-
-        $manager = new HeroesManager($bdd);
-        $hero = $manager->find($_GET['id']);
-
-        $fightManager = new FightManager();
-        $monsterManager = new MonsterManager($bdd);
-        $monster = $monsterManager->selectMonster();
-        $fightResults = $fightManager->fight($hero, $monster);
-        $manager->update($hero);
-
-        ?>
-        <div class="herocard">
-            <p>
-                <?php echo $hero->getName(); ?>
-            </p>
-            <div class="hp">
-                <p>
-                        <?php echo $hero->getHp(); ?>
-                    </p>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) 
-                    Copyright 2023 Fonticons, Inc. --><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 
-                    47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 
-                    115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
-                
-                
-            </div>
+    <div class="arena">
+        <div class="hero">
+            <img src="<?php echo $hero->getPicture(); ?>">
         </div>
 
-        <?php
-        foreach ($fightResults as $result) {
-            echo $result . "<br/>";
-        }
-        ?>
-
+        <div class="monster">
+            <img src="<?php echo $monster->getPicture(); ?>">
+        </div>
     </div>
+    <div class="container">
 
+        <div class="herostats">
+
+            <p><?php echo $hero->getName(); ?></p>
+
+            <div class="pv">
+                <p class="pvHero"><?php echo $hero->getHp(); ?> </p>
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="white" viewBox="0 0 512 512">
+                    ! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License)
+                    Copyright 2023 Fonticons, Inc.
+                    <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 
+                    47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 
+                    115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                </svg>
+            </div>
+            <img src="<?php echo $hero->getIcon(); ?>">
+        </div>
+
+        <div class="log">
+            <h2>Fight :</h2>
+            <?php
+
+            echo '<p class="tour">' . $fightResults[0]  . "</p>";
+
+            ?>
+        </div>
+        <div class="monsterstats">
+            <p><?php echo $monster->getName(); ?></p>
+            <div class="pv">
+                <p class="pvMonster"><?php echo $monsterHP ?></p>
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="white" viewBox="0 0 512 512">
+                    ! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License)
+                    Copyright 2023 Fonticons, Inc.
+                    <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 
+                    47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 
+                    115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                </svg>
+            </div>
+            <img src="<?php echo $monster->getIcon(); ?>">
+        </div>
+    </div>
+    <button class="next">Next Turn >></button>
+
+    <audio id="my_audio" loop>
+        <source src="sounds/battle.mp3" type="audio/mpeg">
+        <source src="sounds/battle.ogg" type="audio/ogg">
+    </audio>
+
+    <audio id="win">
+        <source src="sounds/win.mp3" type="audio/mpeg">
+        <source src="sounds/win.wav" type="audio/wav">
+        <source src="sounds/win.ogg" type="audio/ogg">
+    </audio>
+
+    <audio id="hit">
+        <source src="sounds/hit.mp3" type="audio/mpeg">
+    </audio>
+
+    <script type="text/javascript">
+        let foo = <?php echo json_encode($fightResults); ?>;
+        window.addEventListener("load", (event) => {
+            document.getElementById('my_audio').play();
+            document.getElementById('my_audio').volume = 0.2;
+        });
+    </script>
+    <script src="utils/main.js"></script>
 </body>
 
 </html>

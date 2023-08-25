@@ -5,6 +5,8 @@ class Hero {
     private $hp;
     private $class;
     private $picture;
+    private $icon;
+    private $attackSpe;
 
   
     function __construct($name,) {
@@ -111,6 +113,47 @@ class Hero {
 
         return $this;
     }
+
+    /**
+     * Get the value of icon
+     */ 
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * Set the value of icon
+     *
+     * @return  self
+     */ 
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of attackSpe
+     */ 
+    public function getAttackSpe()
+    {
+        return $this->attackSpe;
+    }
+
+    /**
+     * Set the value of attackSpe
+     *
+     * @return  self
+     */ 
+    public function setAttackSpe($attackSpe)
+    {
+        $this->attackSpe = $attackSpe;
+
+        return $this;
+    }
+
     public function hit(Monster $monster):int
     {
         $damage = rand(0,50);
@@ -122,9 +165,6 @@ class Hero {
 
         return $damage;
     }
-
-    
-
 }
 
 ?>

@@ -1,9 +1,15 @@
 
-
+body{
+    background-image: url("../img/index.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 .choiceButton{
     background-color: transparent;
     border: 1px solid grey;
     color:grey;
+
 
 }
 .choiceButton:hover{
@@ -24,8 +30,11 @@
     flex-direction: column;
     margin: 10px;
     padding: 10px;
-    min-width: 300px;
-    width:300px;
+    width:200px;
+    background-color: #1e1e1e;
+    border: 1px solid white;
+    color: lightgrey;
+    justify-content: flex-end;
 }
 
 form>div{
@@ -42,7 +51,28 @@ form>div>*{
 svg{
     margin-left: 5px;
     margin-bottom: 1rem;
+    fill:red;
 }
 .pic>*{
     width:100%;
+}
+
+.nom{
+    text-align:center;
+}
+
+input{
+    color:white;
+    background-color: #1e1e1e;
+    border: 1px solid white;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+label{
+    color:white;
+}
+select{
+    background-color: #1e1e1e;
+    color:white;
 }

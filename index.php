@@ -22,7 +22,12 @@ require_once('config/autoload.php');
             <option value="mage" selected>Mage</option>
             <option value="archer">Archer</option>
         </select>
-        <input type="submit">
+        <select name="char">
+            <option value="cloud">Cloud</option>
+            <option value="raegan" selected>Raegan</option>
+            <option value="tifa">Tifa</option>
+        </select>
+        <input type="submit" choiceButton>
     </form>
 
  <div class="container">
@@ -32,15 +37,16 @@ require_once('config/autoload.php');
         if(isset($_POST["name"])&& $_POST['name'] != ""){
         
             $hero = new Hero($_POST['name']);
-            $manager->add($hero,$_POST['class']);   
+            $manager->add($hero,$_POST['class'], $_POST['char']);
+            
         }
         $heroes = $manager->findAllAlive();
         
         foreach($heroes as $hero){
-            echo'<div class="card bg-light d-flex flex-column">';
+            echo'<div class="card bg-dark text-white d-flex flex-column border-white">';
             echo '<div class="pic"><img src="'.$hero['picture'].'"></div>';
             echo'<form method="get" action="fight.php" class="d-flex flex-column">';
-            echo '<p>nom : '.$hero['name'] . ' </p><div><p>'. $hero['health_point'] .' </p>';
+            echo '<p class="nom">'.$hero['name'] . ' </p><div><p>'. $hero['health_point'] .' </p>';
             echo'<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
             <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) 
             Copyright 2023 Fonticons, Inc. --><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 
@@ -51,9 +57,12 @@ require_once('config/autoload.php');
         }
         ?>
  </div>
-        
+ <audio id="my_audio" loop>
+    <source src="sounds/prelude.mp3" type="audio/mpeg">
+</audio>
 
-    
+
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+ <script src="utils/index.js"></script>
 </body>
 </html>

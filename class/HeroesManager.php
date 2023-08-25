@@ -27,13 +27,16 @@ class HeroesManager{
 
     
 
-    public function add(Hero $hero,$class): string 
+    public function add(Hero $hero,$class,$chara): string 
     {
         $hero->setClass($class);
-        $req = $this->getDb()->prepare("INSERT INTO heroes(name,health_point) VALUES(:name,:health_point)");
+        $this->generatePic($hero, $chara);
+        $req = $this->getDb()->prepare("INSERT INTO heroes(name,health_point,picture,icon) VALUES(:name,:health_point,:picture,:icon)");
         if($req->execute(array(
             'name'=>$hero->getName(),
             'health_point'=>$this->generateHP($hero),
+            'picture'=>$hero->getPicture($hero),
+            'icon'=>$hero->getIcon($hero)
         )));
        
         $id = $this->db->lastInsertId();
@@ -72,6 +75,12 @@ class HeroesManager{
         return $hp;
     }
 
+    public function generatePic(Hero $hero, $chara):void
+    {
+        $hero->setPicture("img/heroes/". $chara . ".png");
+        $hero->setIcon("img/icon/" . $chara ."-icon.png");
+    }
+
     
 
     public function findAllAlive(): array|false
@@ -96,6 +105,8 @@ class HeroesManager{
         $newHero = new Hero($hero['name']);
         $newHero->setId($hero['id']);
         $newHero->setHp($hero['health_point']);
+        $newHero->setPicture($hero['picture']);
+        $newHero->setIcon($hero['icon']);
 
         return $newHero;
     }

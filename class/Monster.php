@@ -2,11 +2,13 @@
 class Monster{
     private $name;
     private $hp;
+    private $picture;
+    private $icon;
+    private $id;
 
-    function __construct($name,$hp)
+    function __construct($name)
     {
         $this->name = $name;
-        $this->hp = $hp;
     }
 
     /**
@@ -49,12 +51,72 @@ class Monster{
         return $this;
     }
 
+   
+
+    /**
+     * Get the value of picture
+     */ 
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set the value of picture
+     *
+     * @return  self
+     */ 
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+    /**
+     * Get the value of icon
+     */ 
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * Set the value of icon
+     *
+     * @return  self
+     */ 
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function hit(Hero $hero):int
     {
-        $damage = 2*$this->multiplicator($hero);
+        $damage = rand(0,20);
         $heroHP = $hero->getHp();
         $hero->setHp($heroHP-($damage));
-        var_dump($this->multiplicator($hero));
         if($hero->getHp()<0){
             $hero->setHp(0);
         }
@@ -87,5 +149,7 @@ class Monster{
         }
         return $multi;
     }
+
+    
 }
 ?>
