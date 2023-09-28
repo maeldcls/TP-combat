@@ -26,6 +26,7 @@ require_once('config/autoload.php');
             <option value="cloud">Cloud</option>
             <option value="raegan" selected>Raegan</option>
             <option value="tifa">Tifa</option>
+            <option value="lulu">Lulu</option>
         </select>
         <input type="submit" choiceButton>
     </form>

@@ -9,7 +9,7 @@ class Hero {
     private $attackSpe;
 
   
-    function __construct($name,) {
+    function __construct($name) {
         $this->name = $name;
     }
 

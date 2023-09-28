@@ -13,7 +13,24 @@ ini_set("error_append_string ", "</pre>");
 // Autoload logic
 function chargerClasse($classname)
 {
-require __DIR__.'/../class/' . $classname . '.php';
+    $classFilePath = __DIR__.'/../class/' . $classname . '.php';
+
+    if (file_exists($classFilePath)) {
+        require $classFilePath;
+        return;
+    }
+
+    $animalsClassPath = __DIR__.'/../class/animals/' . $classname . '.php';
+    if (file_exists($animalsClassPath)) {
+        require $animalsClassPath;
+        return;
+    }
+
+    $enclosClassPath = __DIR__.'/../class/enclos/' . $classname . '.php';
+    if (file_exists($enclosClassPath)) {
+        require $enclosClassPath;
+        return;
+    }
 }
 spl_autoload_register('chargerClasse');
 // Session

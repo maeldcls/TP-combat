@@ -154,6 +154,41 @@ body{
     .container{
         width:100%;
     }
+    .attackHero{
+        animation-name: attackHero;
+        animation-duration: 1s;
+    }
+    
+    @keyframes attackHero{
+        0% {
+            transform: translateX(0%);
+            
+        }
+        50%{
+            transform: translateX(50%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+    
+    .attackMonster{
+        animation-name: attackMonster;
+        animation-duration: 1s;
+    }
+    
+    @keyframes attackMonster{
+        0% {
+            transform: translateX(0%);
+            
+        }
+        50%{
+            transform: translateX(-50%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
   }
 
 .attackHero{
