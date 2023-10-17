@@ -23,6 +23,7 @@ class FightManager{
 
         }
         return $log;
+        
     }
 }
 ?>

@@ -1,9 +1,11 @@
 
-body{
+body,html{
     background-image: url("../img/index.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-color: #1e1e1e;
+    min-height: 100vh;
 }
 .choiceButton{
     background-color: transparent;

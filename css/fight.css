@@ -12,12 +12,16 @@ body{
 
 
 .accueil{
+    background-color: #464ed3;
+
+    border: 1px solid white;
+    color:white;
+    opacity: 80%;
+    cursor:pointer;
+    padding:10px;
     text-decoration: none;
-    color: grey;
-    background-color: white;
-    border: 1px solid grey;
-    border-radius: 20px;
-    padding: 10px;
+    font-size: 20px;
+    margin-top:0px;
 }
 
 .container{
@@ -137,60 +141,29 @@ body{
     margin-top:0px;
     
 }
+.menu{
+    background-color: #464ed3;
+    width:60%;
+    border: 1px solid white;
+    color:white;
+    opacity: 80%;
+    cursor:pointer;
+    height: 50px;
+    font-size: 20px;
+    margin-top:0px;
+}
 .container{
     margin-bottom:0px;
 }
 .tour{
    font-size:20px;
 }
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    .container{
-        width:100%;
-    }
-  }
-
-  @media only screen and (max-width: 320px) {
-    .container{
-        width:100%;
-    }
-    .attackHero{
-        animation-name: attackHero;
-        animation-duration: 1s;
-    }
-    
-    @keyframes attackHero{
-        0% {
-            transform: translateX(0%);
-            
-        }
-        50%{
-            transform: translateX(50%);
-        }
-        100% {
-            transform: translateX(0%);
-        }
-    }
-    
-    .attackMonster{
-        animation-name: attackMonster;
-        animation-duration: 1s;
-    }
-    
-    @keyframes attackMonster{
-        0% {
-            transform: translateX(0%);
-            
-        }
-        50%{
-            transform: translateX(-50%);
-        }
-        100% {
-            transform: translateX(0%);
-        }
-    }
-  }
-
+.display{
+    display: block;
+}
+.hide{
+    display: none;
+}
 .attackHero{
     animation-name: attackHero;
     animation-duration: 1s;
@@ -224,5 +197,108 @@ body{
     }
     100% {
         transform: translateX(0%);
+    }
+}
+
+
+/* Style pour les écrans larges (par exemple, les ordinateurs de bureau) */
+@media (min-width: 1024px) {
+    @keyframes attackHero{
+        0% {
+            transform: translateX(0%);
+            
+        }
+        50%{
+            transform: translateX(500%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+    
+    .attackMonster{
+        animation-name: attackMonster;
+        animation-duration: 1s;
+    }
+    
+    @keyframes attackMonster{
+        0% {
+            transform: translateX(0%);
+            
+        }
+        50%{
+            transform: translateX(-200%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+}
+
+/* Style pour les tablettes */
+@media (max-width: 1023px) and (min-width: 768px) {
+    @keyframes attackHero{
+        0% {
+            transform: translateX(0%);
+            
+        }
+        50%{
+            transform: translateX(160%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+    
+    .attackMonster{
+        animation-name: attackMonster;
+        animation-duration: 1s;
+    }
+    
+    @keyframes attackMonster{
+        0% {
+            transform: translateX(0%);
+            
+        }
+        50%{
+            transform: translateX(-90%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+}
+
+/* Style pour les smartphones */
+@media (max-width: 767px) {
+    @keyframes attackHero{
+        0% {
+            transform: translateX(0%);
+            
+        }
+        50%{
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+    
+    .attackMonster{
+        animation-name: attackMonster;
+        animation-duration: 1s;
+    }
+    
+    @keyframes attackMonster{
+        0% {
+            transform: translateX(0%);
+            
+        }
+        50%{
+            transform: translateX(-50%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
     }
 }

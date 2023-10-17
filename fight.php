@@ -27,7 +27,7 @@ $manager->update($hero);
 </head>
 
 <body>
-    <a href="index.php" class="accueil">Accueil</a>
+    <a href="index.php" class="accueil">Main Menu</a>
 
     <div class="arena">
         <div class="hero">
@@ -81,7 +81,6 @@ $manager->update($hero);
         </div>
     </div>
     <button class="next">Next Turn >></button>
-
     <audio id="my_audio" loop>
         <source src="sounds/battle.mp3" type="audio/mpeg">
         <source src="sounds/battle.ogg" type="audio/ogg">
