@@ -58,7 +58,7 @@ require_once('config/autoload.php');
         }
         ?>
  </div>
- <audio id="prelude" loop>
+ <audio id="my_audio" loop>
     <source src="sounds/prelude.mp3" type="audio/mpeg">
 </audio>
 
