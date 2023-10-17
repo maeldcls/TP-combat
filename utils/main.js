@@ -59,6 +59,7 @@ next.addEventListener("click", function() {
 
 
 window.onload = function() {
+    document.getElementById('prelude').pause();
     my_audio.play();
 }
 
