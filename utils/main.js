@@ -44,6 +44,8 @@ next.addEventListener("click", function() {
                 monstHp.innerHTML = 0;
                 tour.innerHTML = "YOU WIN";
                 next.style.display = "none";
+                document.getElementById('my_audio').pause();
+                win.play();
             }
         }
         index++;
@@ -51,7 +53,7 @@ next.addEventListener("click", function() {
 
     if(index == foo.length){
         document.getElementById('my_audio').pause();
-        win.play();
+        
     }
     
 });
